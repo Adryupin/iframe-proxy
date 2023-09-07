@@ -27,6 +27,7 @@
 	<script type="text/javascript">
 		window.onload = function(e){ 
 			let userId = window.Telegram.WebApp.initDataUnsafe.user.id;
+			await sleep(3000);
 			document.body.innerHTML = "<iframe src='https://wowpack-dev.ru/wheel?id="+userId+"' class='iframe'></iframe>";
 		}
 	</script>
