@@ -28,10 +28,13 @@
 		function sleep(ms) {
     			return new Promise(resolve => setTimeout(resolve, ms));
 		}
-		window.onload = function(e){ 
+		async function loadPage() {
 			let userId = window.Telegram.WebApp.initDataUnsafe.user.id;
 			await sleep(3000);
 			document.body.innerHTML = "<iframe src='https://wowpack-dev.ru/wheel?id="+userId+"' class='iframe'></iframe>";
+		}
+		window.onload = function(e){ 
+			loadPage();
 		}
 	</script>
 </head>
