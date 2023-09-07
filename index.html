@@ -22,8 +22,13 @@
 		}
 	</style>
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	<script type="text/javascript">
+		window.onload = function(e){ 
+			let userId = window.Telegram.WebApp.initDataUnsafe.user.id;
+			document.body.innerHTML = "<iframe src='https://wowpack-dev.ru/wheel?id="+userId+"' class='iframe'></iframe>";
+		}
+	</script>
 </head>
 <body>
-	<iframe src='https://wowpack-dev.ru/wheel' class='iframe'></iframe>
 </body>
 </html>
