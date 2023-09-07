@@ -31,6 +31,24 @@
 		async function loadPage() {
 			let userId = window.Telegram.WebApp.initDataUnsafe.user.id;
 			await sleep(3000);
+
+			xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 503) {
+                   document.body.innerHTML = "<div class='cycle_close'><h1>К сожалению, 'Колесо фортуны' сейчас недоступно.<br>Попробуйте позже...</h1></div>";
+                }
+             };
+
+             while (xhttp.responseText == undefined || !loaded) {
+                loaded = true;
+                xhttp.onload = function() {
+				console.log("Available prizes");
+
+                  console.log(this.responseText);
+               }
+               xhttp.open("GET", "https://wowpack-dev.ru/wheel?id="+userId, true);
+               xhttp.send();
+            }
+			
 			document.body.innerHTML = "<iframe src='https://wowpack-dev.ru/wheel?id="+userId+"' class='iframe'></iframe>";
 		}
 		window.onload = function(e){ 
